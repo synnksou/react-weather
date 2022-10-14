@@ -1,5 +1,12 @@
+import DayCardCarroussel from "./../DayCardCaroussel/DayCardCarroussel";
+
 function Weather() {
-  return <p>Weather</p>;
+  return (
+    <div>
+      <p>Weather</p>
+      <DayCardCarroussel />
+    </div>
+  );
 }
 
 export default Weather;
