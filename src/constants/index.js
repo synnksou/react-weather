@@ -1,1 +1,1 @@
-export const API_BASE = process.env.REACT_APP_API_BASE_URL || ''; //TOKEN API
+export const API_BASE = 'ba9cb7c0c99f38cf9dd60ab44b04e814';
