@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { camelizeKeys, decamelizeKeys } from 'humps';
-import { API_BASE, API_KEY } from '../constants';
+import { API_BASE } from '../constants';
 import canParam from 'can-param';
 
 const api = axios.create({ baseURL: API_BASE });
@@ -17,8 +17,6 @@ api.interceptors.request.use(config => {
   const accessToken = localStorage.getItem('accessToken');
 
   config.paramsSerializer = params => canParam(params);
-
-  config.headers['Accept'] = 'application/json';
 
   if (Boolean(accessToken)) {
     config.headers['Authorization'] = `Bearer ${accessToken}`;
