@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { getWeatherZipCode } from '../../api/weather';
+import { useLocalStorage } from '../../hook/useLocalStorage';
 import WeatherCard from './WeatherCard';
 
 const Weathers = () => {
   const [zipCode, setZipCode] = useState('59000');
   const [error, setError] = useState(null);
+  const [favorite, setFavorite] = useLocalStorage('favorisZipCode', '');
 
   const { data, refetch } = useQuery(
     'weather',
@@ -20,6 +22,10 @@ const Weathers = () => {
       },
     },
   );
+
+  const handleAddFavorite = () => {
+    setFavorite(zipCode);
+  };
 
   console.log({ data });
 
@@ -67,7 +73,13 @@ const Weathers = () => {
         </div>
 
         <div className="max-w-md">
-          {data && <WeatherCard weather={data} />}
+          {data && (
+            <WeatherCard
+              weather={data}
+              handleAddFavorite={handleAddFavorite}
+              favorite={favorite}
+            />
+          )}
           {/*  <h1 className="text-5xl font-bold">Hello there</h1>
           <p className="py-6">
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
