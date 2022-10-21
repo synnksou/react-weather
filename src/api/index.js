@@ -32,11 +32,7 @@ api.interceptors.request.use(config => {
 });
 
 const formatResponse = response => {
-  if (!Boolean(response)) {
-    return response;
-  }
-
-  return camelizeKeys(response);
+  return response?.data;
 };
 
 export const get = (uri, config = {}) =>
