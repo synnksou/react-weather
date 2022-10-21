@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { getPollution } from '../../api/pollution';
 import PollutionCard from './PollutionCard';
 
-const Pollutions = () => {
+const Pollution = () => {
   const [zipCode, setZipCode] = useState('59000');
   const [error, setError] = useState(null);
 
@@ -67,7 +67,7 @@ const Pollutions = () => {
         </div>
 
         <div className="max-w-md">
-          {data && <WeatherCard weather={data} />}
+          {data && <PollutionCard pollution={data} />}
           {/*  <h1 className="text-5xl font-bold">Hello there</h1>
           <p className="py-6">
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
@@ -81,4 +81,4 @@ const Pollutions = () => {
   );
 };
 
-export default Weathers;
+export default Pollution;
