@@ -1,5 +1,4 @@
 const PollutionCard = ({ pollution }) => {
-  console.log({ pollution });
 
   return (
     <div className="shadow-xl card-side w-96 bg-base-100">
