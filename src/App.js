@@ -1,6 +1,6 @@
 import './App.css';
 import Weathers from './components/Weather/Weathers';
-import Weathers from './components/Pollution/Pollutions';
+import Pollution from './components/Pollution/Pollutions';
 import { Routes, Route } from "react-router-dom";
 
 const App = () => {
