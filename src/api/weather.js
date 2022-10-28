@@ -1,11 +1,13 @@
 import { get } from '.';
-import { API_KEY } from '../constants';
+import { REACT_APP_API_KEY } from '../constants';
 
 export const getWeatherLat = ({ lat, lon }) =>
-  get(`forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&lang=fr`);
+  get(`forecast?lat=${lat}&lon=${lon}&appid=${REACT_APP_API_KEY}&lang=fr`);
 
 export const getWeatherZipCode = ({ zipCode }) =>
-  get(`weather?zip=${zipCode},FR&appid=${API_KEY}&lang=fr&units=metric`);
+  get(
+    `weather?zip=${zipCode},FR&appid=${REACT_APP_API_KEY}&lang=fr&units=metric`,
+  );
 
 export const getForeCastZipCode = ({ zipCode }) =>
-  get(`forecast?zip=${zipCode},FR&appid=${API_KEY}&lang=fr`);
+  get(`forecast?zip=${zipCode},FR&appid=${REACT_APP_API_KEY}&lang=fr`);

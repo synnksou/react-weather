@@ -9,7 +9,7 @@ const Weathers = () => {
   const [error, setError] = useState(null);
   const [favorite, setFavorite] = useLocalStorage('favorisZipCode', '');
 
-  const { data, refetch } = useQuery(
+  const { data: weather, refetch } = useQuery(
     'weather',
     () =>
       getWeatherZipCode({
@@ -22,19 +22,6 @@ const Weathers = () => {
       },
     },
   );
-
-  // I think that setFavorites is enough, no need to add an handler method if you rethrow just one method 
-  const handleAddFavorite = () => {
-    setFavorite(zipCode);
-  };
-
-  // remove dirty console log
-  console.log({ data });
-
-  // same as line 26
-  const handleSearch = () => {
-    refetch();
-  };
 
   return (
     <div className="min-h-screen hero bg-base-200">
@@ -66,32 +53,19 @@ const Weathers = () => {
               </div>
             </div>
           )}
-          <button
-            type="text"
-            className="btn btn-primary"
-            onClick={handleSearch}
-          >
+          <button type="text" className="btn btn-primary" onClick={refetch}>
             Rechercher
           </button>
         </div>
 
         <div className="max-w-md">
-          // if the entity that you bind into Weather card is Weather, you should call your variable Weather, data is to magic for me :p
-          {data && (
+          {weather && (
             <WeatherCard
-              weather={data}
-              handleAddFavorite={handleAddFavorite}
+              weather={weather}
+              handleAddFavorite={() => setFavorite(zipCode)}
               favorite={favorite}
             />
           )}
-          // This dead template should be removed if he is not necessary
-          {/*  <h1 className="text-5xl font-bold">Hello there</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-          <button className="btn btn-primary">Get Started</button> */}
         </div>
       </div>
     </div>

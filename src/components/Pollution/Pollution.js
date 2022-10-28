@@ -7,7 +7,7 @@ const Pollution = () => {
   const [zipCode, setZipCode] = useState('59000');
   const [error, setError] = useState(null);
 
-  const { data, refetch } = useQuery(
+  const { data: pollution, refetch } = useQuery(
     'pollution',
     () =>
       getPollution({
@@ -20,14 +20,6 @@ const Pollution = () => {
       },
     },
   );
-
-  // remove dirty console log
-  console.log({ data });
-
-  // same as the other component, if your doing only one thing, no need to wrap your method into another one
-  const handleSearch = () => {
-    refetch();
-  };
 
   return (
     <div className="min-h-screen hero bg-base-200">
@@ -59,26 +51,13 @@ const Pollution = () => {
               </div>
             </div>
           )}
-          <button
-            type="text"
-            className="btn btn-primary"
-            onClick={handleSearch}
-          >
+          <button type="text" className="btn btn-primary" onClick={refetch}>
             Rechercher
           </button>
         </div>
 
         <div className="max-w-md">
-         // Data sounds like a magic name for me
-          {data && <PollutionCard pollution={data} />}
-         // remove dead template
-          {/*  <h1 className="text-5xl font-bold">Hello there</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-          <button className="btn btn-primary">Get Started</button> */}
+          {pollution && <PollutionCard pollution={pollution} />}
         </div>
       </div>
     </div>

@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { camelizeKeys, decamelizeKeys } from 'humps';
-import { API_BASE } from '../constants';
+import { REACT_APP_API_BASE } from '../constants';
 import canParam from 'can-param';
 
-const api = axios.create({ baseURL: API_BASE });
+const api = axios.create({ baseURL: REACT_APP_API_BASE });
 
 const formatConfig = ({ params, ...opts } = {}) => ({
   ...opts,
