@@ -1,3 +1,4 @@
+// Normalise method naming
 function LocalisationSearch() {
   return (
     <form>
