@@ -21,8 +21,10 @@ const Pollution = () => {
     },
   );
 
+  // remove dirty console log
   console.log({ data });
 
+  // same as the other component, if your doing only one thing, no need to wrap your method into another one
   const handleSearch = () => {
     refetch();
   };
@@ -67,7 +69,9 @@ const Pollution = () => {
         </div>
 
         <div className="max-w-md">
+         // Data sounds like a magic name for me
           {data && <PollutionCard pollution={data} />}
+         // remove dead template
           {/*  <h1 className="text-5xl font-bold">Hello there</h1>
           <p className="py-6">
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
