@@ -23,12 +23,15 @@ const Weathers = () => {
     },
   );
 
+  // I think that setFavorites is enough, no need to add an handler method if you rethrow just one method 
   const handleAddFavorite = () => {
     setFavorite(zipCode);
   };
 
+  // remove dirty console log
   console.log({ data });
 
+  // same as line 26
   const handleSearch = () => {
     refetch();
   };
@@ -73,6 +76,7 @@ const Weathers = () => {
         </div>
 
         <div className="max-w-md">
+          // if the entity that you bind into Weather card is Weather, you should call your variable Weather, data is to magic for me :p
           {data && (
             <WeatherCard
               weather={data}
@@ -80,6 +84,7 @@ const Weathers = () => {
               favorite={favorite}
             />
           )}
+          // This dead template should be removed if he is not necessary
           {/*  <h1 className="text-5xl font-bold">Hello there</h1>
           <p className="py-6">
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
